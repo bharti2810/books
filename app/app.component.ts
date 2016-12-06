@@ -5,13 +5,14 @@ import {ExperimentsComponent} from './experiments/experiments.component';
 import {HomeComponent} from './home/home.component';
 import {StateService} from './common/state.service';
 import {ExperimentsService} from './common/experiments.service';
+import {LangCodesService} from './common/langcodes.service';
 
 @Component({
   selector: 'app',
   template: require('./app.component.html'),
   styles: [require('./app.component.css')],
   directives: [ ROUTER_DIRECTIVES ],
-  providers: [StateService, ExperimentsService],
+  providers: [StateService, ExperimentsService, LangCodesService],
 })
 @Routes([
   {path: '/',            component: HomeComponent },
