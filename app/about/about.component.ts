@@ -5,13 +5,12 @@ import {LangCodesService} from '../common/langcodes.service';
 
 @Component({
   selector: 'about',
-  template: require('./about.component.html')
-})
-export class AboutComponent implements OnInit{
+
   title: string = 'About Page';
   body:  string = 'This is the about page body';
   message: string;
   langCodes: LanguageCode[];
+
 
   constructor(public _stateService: StateService, public _langCodesService: LangCodesService) { }
 
