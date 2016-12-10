@@ -1,23 +1,9 @@
-# Building an Angular 2 Website Using Routes
-This is a simple Angular 2 website using the brand new router. It demonstrates how to build components, configure routes, inject services, and use the `@Input` decorator to bind properties to components.
+# Angular2 starter kit with Typescript and Webpack
 
-## Dependencies
-- You must have `node` and `npm` installed (via `brew install node` or [NodeJS.org](https://nodejs.org/en/));
-- You must also have `typings` installed globally via `npm i -g typings`
-- Be sure that you have `typings` version `1.x`
+### Setup
 
-## Getting Started
+- npm install  
+- npm start  
+- start browser with http://localhost:8080  
 
-
-```bash
-git clone https://github.com/simpulton/angular2-website-routes.git
-cd angular2-website-routes
-npm i
-typings install
-npm start
-```
-
-Then navigate your browser to [http://localhost:3001](http://localhost:3001) and use the app.
-
-## Testing
-The test setup includes `webpack.test.config.js`, `spec-bundle.js`, and `karma.conf.js`. To run unit tests, execute `npm test` in your terminal.
+Checkout this [article](http://www.schempy.com/2016/01/19/angular2_webpack_typescript/) for full documentation based on angular 2.0.0 final

@@ -1,23 +1,24 @@
+/// <reference path="../typings/index.d.ts" />
+
 import {Component, OnInit} from '@angular/core';
 import {LanguageCode} from './common/langcode.model';
 import {Book} from './common/book.model';
 import {LangCodesService} from './common/langcodes.service';
 import {HTTPTestService} from './common/http-test.service';
 
-
 @Component({
     selector: 'app',
-    templateUrl: './main.component.html',
+    templateUrl: 'app/app.component.html',
     providers: [LangCodesService, HTTPTestService],
    
  })
 
-export class MainComponent implements OnInit {
+export class AppComponent implements OnInit {
     postData: string;
     title: string = 'Booktest';
     langCodes: LanguageCode[] = [];
     years: number[] = [];
-    book: Book;
+    book: Book = new Book();
 
     constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService) {
     
@@ -35,11 +36,10 @@ export class MainComponent implements OnInit {
   }
 
   onTestPost(){
-        this._httpService.postJSON(this.book)
-        .subscribe(
-            data =>this.postData=JSON.stringify(data),
+        this._httpService.postJSON(this.book).subscribe(
+            data => this.postData = JSON.stringify(data),
             error => alert(error),
-            () => console.log("Finished")
+            () => console.log(this.postData)
         );
     }
 }

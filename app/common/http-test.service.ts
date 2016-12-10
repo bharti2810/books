@@ -14,8 +14,7 @@ export class HTTPTestService {
         // let json = JSON.stringify(book);
         // let params = 'json=' + json;
         let options = new RequestOptions({ headers: headers });
-        return this._http.post('http://192.168.0.4:3000/api/books',{ book }, options);
-        //.map(res => res.json());
+        return this._http.post('http://192.168.0.6:3000/api/books',{ book }, options)
+        .map(res => res.json());
     }
-
 }
