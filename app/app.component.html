@@ -1,27 +1,43 @@
-<div id="form-container">
-  <h1>Book Submission</h1>
+
+  <body>
+    
+  <h1 >Book Submission</h1>
+
   <form method="post">
-    <label >Title</label>
+    <div class="col-2">
+    <label >Title         
     <input type="text" name="title" placeholder="Title"  [(ngModel)]='book.title' required ><br><br>
-
-    <label >Author</label>
+      </label>
+</div>
+<div class="col-3">
+    <label >Author       
     <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required><br><br>
+      </label>
+</div>
+<div class="col-2">
+    <label >Publication Year
 
-    <label >Publication Year</label>
 
-
-    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year" [(ngModel)]='book.publicationYear' required>
-      <option *ngFor="let year of years" value="{{year}}">{{year}}</option>
+    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' required>
+      <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years in an array -->
     </select>
+    </label>
 
     <br><br>
+    </div>
+    <div class="col-3">
 
-    <label for="Langauge">Langauge</label>
+    <label for="Langauge     ">Langauge
     <select id="Langauge" name="Langauge" [(ngModel)]='book.language'>
       <option *ngFor="let lang of langCodes" value="{{lang}}">{{lang.code}} - {{lang.name}}</option>
     </select>
+    </label>
+    </div >
 
+<div class="col-submit">
     <br><br>
      <button (click)="onTestPost()">Add</button>
+     </div >
   </form>
-</div>
+  </body>
+

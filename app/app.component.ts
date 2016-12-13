@@ -9,6 +9,7 @@ import {HTTPTestService} from './common/http-test.service';
 @Component({
     selector: 'app',
     templateUrl: 'app/app.component.html',
+    styleUrls: ['app/app.componentstyle.css'],
     providers: [LangCodesService, HTTPTestService],
    
  })
@@ -18,10 +19,10 @@ export class AppComponent implements OnInit {
     title: string = 'Booktest';
     langCodes: LanguageCode[] = [];
     years: number[] = [];
-    book: Book = new Book();
+    book: Book = new Book();//book is a property of class BOOK(data type)
 
-    constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService) {
-    
+    constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService) {//_langCodesService is an object of LangCodesService
+    //constructor creates these objects but their functionality is defined in ngoninit 
     for (var i = 2016; i >= 1990; i--) {
       this.years.push(i);
     }
@@ -36,10 +37,10 @@ export class AppComponent implements OnInit {
   }
 
   onTestPost(){
-        this._httpService.postJSON(this.book).subscribe(
+        this._httpService.postJSON(this.book).subscribe(//postJSON is a method to post JSON data
             data => this.postData = JSON.stringify(data),
             error => alert(error),
-            () => console.log(this.postData)
+            () => console.log(this.postData)//() is used for completed notification
         );
     }
 }
