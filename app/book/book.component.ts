@@ -1,20 +1,20 @@
-/// <reference path="../typings/index.d.ts" />
+
 
 import {Component, OnInit} from '@angular/core';
-import {LanguageCode} from './common/langcode.model';
-import {Book} from './common/book.model';
-import {LangCodesService} from './common/langcodes.service';
-import {HTTPTestService} from './common/http-test.service';
+import {LanguageCode} from '../common/langcode.model';
+import {Book} from '../common/book.model';
+import {LangCodesService} from '../common/langcodes.service';
+import {HTTPTestService} from '../common/http-test.service';
 
 @Component({
-    selector: 'app',
+    selector: 'book',
     templateUrl: 'app/app.component.html',
     styleUrls: ['app/app.componentstyle.css'],
     providers: [LangCodesService, HTTPTestService],
    
  })
 
-export class AppComponent implements OnInit {
+export class BookComponent implements OnInit {
     postData: string;
     title: string = 'Booktest';
     langCodes: LanguageCode[] = [];
@@ -42,5 +42,6 @@ export class AppComponent implements OnInit {
             error => alert(error),
             () => console.log(this.postData)//() is used for completed notification
         );
+       
     }
 }
