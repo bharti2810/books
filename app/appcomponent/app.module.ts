@@ -13,9 +13,10 @@ import {BookComponent} from '../book/book.component';
         
          
             { path :'/books/add' , component: BookComponent }, //Displays add book form
-            { path :'/book/id ' ,  component: BookComponent }, //Displays book details but input fields are disabled
+            { path :'/book/:id ' ,  component: BookComponent }, //Displays book details but input fields are disabled
             { path:'/' ,      component: AppComponent },
-    ]) 
+            
+    ], {useHash: true}) 
     ],
     
     bootstrap:      [AppComponent]

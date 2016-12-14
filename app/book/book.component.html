@@ -1,9 +1,9 @@
-<p>
-    Book Submission</h1>
+
+   <h1> Book Submission</h1>
     <form method="post">
         <div class="col-2">
             <label>Title         
-    <input type="text" name="title" placeholder="Title"  [(ngModel)]='book.title' required ><br><br>
+    <input type="text" name="title" placeholder="Title" *ngIf="showElements" [(ngModel)]='book.title' required ><br><br>
       </label>
         </div>
         <div class="col-3">
@@ -25,15 +25,18 @@
         <div class="col-3">
 
             <label for="Langauge     ">Langauge
-    <select id="Langauge" name="Langauge" [(ngModel)]='book.language'>
+    <select id="Langauge" name="Langauge" [(ngModel)]="book.language">
       <option *ngFor="let lang of langCodes" value="{{lang}}">{{lang.code}} - {{lang.name}}</option>
     </select>
     </label>
         </div>
-
         <div class="col-submit">
             <br><br>
             <button (click)="onTestPost()">Add</button>
         </div>
+        <p>
+        {{book.title}} - {{book.id}} - {{book.author}} - {{book.publicationYear}} - {{book.langauge}}
+        </p>
     </form>
-</p>
+
+    
