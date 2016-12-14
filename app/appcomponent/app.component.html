@@ -1,15 +1,17 @@
- <h1 >
-        <a [routerLink]="['/']"></a>
-    </h1>
-    <nav>
+<h1>
+    <a [routerLink]="['/']"></a>
+</h1>
 
-    <div id="menu">Menu
-        <select name="select" id="select" title="select" placeholder="Add" required>
+
+<div>Menu
+    <select name="select" id="select" title="select" placeholder="Add" required>
             <option  value="Select">
                 Book
                 </option> 
         </select>
-        <a [routerLink]="['/books/add']">Add</a>
-    </div>
-    </nav>
+    <a [routerLink]="['/books/add']">Add</a>
+</div>
+<div>
+
     <router-outlet></router-outlet>
+</div>
