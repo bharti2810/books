@@ -8,7 +8,6 @@ import {BookComponent} from '../book/book.component';
 import {BookListComponent} from '../book/booklist.component';
 import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
 
-
 @NgModule({
     imports:        [BrowserModule, FormsModule, HttpModule,Ng2PaginationModule,
     RouterModule.forRoot([
