@@ -2,41 +2,28 @@ import {Component,OnInit} from '@angular/core';
 import {BookService} from '../common/books.service';
 import {NgFor} from '@angular/common';
 import {Book} from '../common/book.model';
+import {Router} from '@angular/router';
  
  @Component({
      selector: 'booklist',
   template: `<h1>hello<h1>
- <div *ngFor="let booklist of Book" value="{{booklist}}">{{booklist.code}} - {{booklist.name}}</div>
-<div class="book-list" (click)="doExperiment()">
-  <h3>
-    {{ book.is }}
-  </h3>
-  <p>
-    {{ book.title }}
-    {{book.publicationYear}}
-    {{book.lanaguge}}
-  </p>
-  <p>
-    <strong>{{book.author}}</strong>
-  </p>
-</div>
+   <ul >
+   <li  (click)="router.navigate(['/book', book.id])" *ngFor="let book of booklist"> 
+   <span>{{book.id}} - {{book.title}}</span>
+   </li>
+   </ul>` ,
+    providers:[BookService]  
+ })
 
-`,
-  providers: [BookService] })
-
-export class BookListComponent  {
-        booklist: Book[] = [];
-        constructor(
-    
-    private _bookService: BookService) {}
+export class BookListComponent implements OnInit {
+        booklist: Book[]=[] ;
+        
+        constructor(private _bookService : BookService, private router: Router) {}//_bookService is a local variale
 
   ngOnInit() {
+
     this.booklist = this._bookService.getBooks();
     
-  }
-
-
- 
-  
+  } 
  
 }
