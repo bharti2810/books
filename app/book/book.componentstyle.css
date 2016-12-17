@@ -86,9 +86,9 @@ form>div.col-submit {
     padding: 20px;
 }
 
-form>div.col-submit button {
+form>div.col-submit a {
     border: 1px solid #E4E4E4;
-    background: #A3CECE;
+    background:"getStyle()";
     font-size: 14px;
     color: #fff;
     padding: 1em;
@@ -101,13 +101,13 @@ form>div.col-submit button {
 }
 
 @media(min-width: 800px) {
-    form>div.col-submit button {
+    form>div.col-submit a {
         width: 30%;
         margin: 0 auto;
     }
 }
 
-form>div.col-submit button:hover {
+form>div.col-submit a:hover {
     background: #92BDBD;
 }
 
@@ -129,3 +129,4 @@ form>div>label>select:focus {
     opacity: 1;
     box-shadow: 0 3px 4px rgba(0, 0, 0, .15);
 }
+

@@ -37,9 +37,32 @@ export class BookService{
  
   ];
 
-  getBooks(): Book[]{
+    getBooks(): Book[]{
+        console.log("First book: ", this.bookcodes[0].id);
       return this.bookcodes;
-  }
+    }
+
+    getIndexByBookId(id: string) : number {
+        for(var i = 0; i < this.bookcodes.length; i++)
+            if(this.bookcodes[i].id == id)
+                return i;
+        
+        return -1;
+    }
+
+    delete(book){
+        console.log(this.bookcodes);
+        let ind : number = this.getIndexByBookId(book.id);
+
+        console.log("Deleting the book with index: ", ind);
+        console.log(" and id: ", this.bookcodes[ind].id);
+        if (ind > -1) 
+        {
+            this.bookcodes.splice(ind, 1);
+            
+        }
+        console.log(this.bookcodes);
+    }
 }
 
 

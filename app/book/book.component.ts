@@ -10,9 +10,7 @@ import {BookService} from '../common/books.service';
     selector: 'book',
     templateUrl: 'app/book/book.component.html',
     styleUrls: ['app/book/book.componentstyle.css'],
-    providers: [LangCodesService, HTTPTestService],
-    
-   
+    providers: [LangCodesService, HTTPTestService]
  })
 
 export class BookComponent implements OnInit {
@@ -21,7 +19,8 @@ export class BookComponent implements OnInit {
     langCodes: LanguageCode[] = [];
     years: number[] = [];
     book: Book = new Book();//book is a property of class BOOK(data type)
-    readOnly: boolean = false;
+    editing: boolean = true;
+    isDetails: boolean = false;
 
     constructor( public _langCodesService: LangCodesService, 
                     public _httpService : HTTPTestService, public route : ActivatedRoute, public bookService: BookService) {//_langCodesService is an object of LangCodesService
@@ -32,9 +31,10 @@ export class BookComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if(params['idparam'] !== undefined) {
-        var index = +params['idparam'];
+        var index = this.bookService.getIndexByBookId(params['idparam']);
         this.book = this.bookService.getBooks()[index];
-        this.readOnly = true;
+        this.editing = false;
+        this.isDetails = true;
       }
     });
     this.langCodes = this._langCodesService.getLanguageCodes();
@@ -54,6 +54,22 @@ export class BookComponent implements OnInit {
             data => this.postData = JSON.stringify(data),
             error => alert(error),
             () => console.log(this.postData)//() is used for completed notification
-        );
+);
+            
   }
+
+    getStyle(){
+        if(this.editing === false)
+        {
+          return "blue";
+        }
+        else{
+          return "red";
+        }
+       
+  }
+  edit()
+   {
+    this.editing= !this.editing;
+   }
 }

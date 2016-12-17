@@ -3,19 +3,19 @@
     <form method="post">
         <div class="col-2">
             <label>Title         
-    <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="readOnly" required><br><br>
+    <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
       </label>
         </div>
         <div class="col-3">
             <label>Author       
-    <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="readOnly"><br><br>
+    <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
       </label>
         </div>
         <div class="col-2">
             <label>Publication Year
 
 
-    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="readOnly" required>
+    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
       <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years is an array -->
     </select>
     </label>
@@ -25,14 +25,16 @@
         <div class="col-3">
 
             <label for="Langauge     ">Langauge
-    <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="readOnly" required>
+    <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
       <option *ngFor="let lang of langCodes" value="{{lang}}">{{lang.code}} - {{lang.name}}</option>
     </select>
     </label>
         </div>
         <div class="col-submit">
             <br><br>
-            <button (click)="onTestPost()">Add</button>
+              <a  [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : onTestPost()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a><br>
+                <br><br>
+                <a [style.background-color]="green" *ngIf="isDetails" (click)="edit()" >{{editing ? "Save":"Edit"}}</a>
         </div>
         
     </form>
