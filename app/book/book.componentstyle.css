@@ -1,14 +1,12 @@
-
-
 h1 {
-    text-align: center
+    text-align: center;
 }
 
 form {
     display: block;
     margin: auto;
     overflow: hidden;
-    background: #FFF;
+    background:#f5f5f5;
     border: 1px solid #E4E4E4;
     border-radius: 5px;
     font-size: 0;
@@ -80,33 +78,51 @@ form>div>label>input {
     opacity: .66;
     transition: opacity .3s, box-shadow .3s;
 }
-
-form>div.col-submit {
+form>div.col-submit{
     text-align: center;
-    padding: 20px;
+    padding:30px; 
 }
 
-form>div.col-submit a {
+.deletebutton {
     border: 1px solid #E4E4E4;
     background:"getStyle()";
     font-size: 14px;
     color: #fff;
     padding: 1em;
-    display: block;
+    display: inline;
+    cursor: pointer;
+    border: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.editbutton{ 
+    border:1px solid #E4E4E4;
+    font-size: 14px;
+    color: #fff;
+    padding: 1em;
+    display: inline;
     width: 100%;
     cursor: pointer;
     border: 0;
     border-radius: 5px;
     text-transform: uppercase;
+    background: #31bc86;
 }
-
 @media(min-width: 800px) {
-    form>div.col-submit a {
-        width: 30%;
-        margin: 0 auto;
+    form>div.col-submit a.deletebutton {
+        width: 20%;
+        margin:10%;
     }
 }
 
+@media(min-width: 800px) {
+    form>div.col-submit a.editbutton {
+        width: 30%;
+        margin: 40px;
+    }
+}
 form>div.col-submit a:hover {
     background: #92BDBD;
 }
