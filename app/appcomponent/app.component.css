@@ -1,0 +1,13 @@
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+nav>div>div>a.navbar-brand {
+    color:#fafafa;
+}
+nav>div>ul>li>a.dropdown-toggle{
+    color:#fafafa;
+}
+.container-fluid{
+    background-color: #212121;
+}
+nav>div>ul>li>a.dropdown-toggle:hover {
+    background-color: #f1f1f1;
+}
