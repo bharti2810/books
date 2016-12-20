@@ -1,5 +1,4 @@
-
-   <h1> Book Submission</h1>
+     <h1> Book Submission</h1>
     <form method="post">
         <div class="col-2">
             <label>Title         
@@ -20,7 +19,6 @@
     </select>
     </label>
 
-            <br><br>
         </div>
         <div class="col-3">
 
@@ -32,11 +30,10 @@
         </div>
         <div class="col-submit">
             <br><br>
-              <a  [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : onTestPost()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a><br>
-                <br><br>
-                <a [style.background-color]="green" *ngIf="isDetails" (click)="edit()" >{{editing ? "Save":"Edit"}}</a>
+              <a  class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : onTestPost()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
+            
+                <a class="editbutton" *ngIf="isDetails" (click)="edit()" >{{editing ? "Save":"Edit"}}</a>
         </div>
         
     </form>
-
     

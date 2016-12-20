@@ -61,10 +61,10 @@ export class BookComponent implements OnInit {
     getStyle(){
         if(this.editing === false)
         {
-          return "blue";
+          return "#e53935";
         }
         else{
-          return "red";
+          return "#31bc86";
         }
        
   }
