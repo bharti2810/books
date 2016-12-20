@@ -38,7 +38,7 @@ export class BookService{
   ];
 
     getBooks(): Book[]{
-        console.log("First book: ", this.bookcodes[0].id);
+        console.log("First book: ", this.bookcodes[4].id);
       return this.bookcodes;
     }
 
