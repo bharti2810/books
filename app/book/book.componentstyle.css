@@ -1,5 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Noticia+Text');
 h1 {
+    font-family: 'Noticia Text', serif;
     text-align: center;
+    color:dimgrey;
+    font-size:40px;
 }
 
 form {
@@ -88,7 +92,7 @@ form>div.col-submit{
     background:"getStyle()";
     font-size: 14px;
     color: #fff;
-    padding: 1em;
+    padding: 10px 15px;
     display: inline;
     cursor: pointer;
     border: 0;
@@ -101,7 +105,7 @@ form>div.col-submit{
     border:1px solid #E4E4E4;
     font-size: 14px;
     color: #fff;
-    padding: 1em;
+    padding: 10px 22px;
     display: inline;
     width: 100%;
     cursor: pointer;

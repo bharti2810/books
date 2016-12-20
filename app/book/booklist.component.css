@@ -1,5 +1,8 @@
 @import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import url('https://fonts.googleapis.com/css?family=Noticia+Text');
 h1{
-    font-family: Georgia;
-    color:darkred;
+    font-family: 'Noticia Text', serif;
+    font-size:40px;
+    color:dimgrey;
+    font-weight:bold;
 }
