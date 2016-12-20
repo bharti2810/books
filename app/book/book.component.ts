@@ -5,11 +5,14 @@ import {LangCodesService} from '../common/langcodes.service';
 import {HTTPTestService} from '../common/http-test.service';
 import {ActivatedRoute, Params} from '@angular/router';
 import {BookService} from '../common/books.service';
+import {ChapterService} from '../common/chapters.service';
+import {Chapter} from '../common/chapter.model';
+
 
 @Component({
     selector: 'book',
     templateUrl: 'app/book/book.component.html',
-    styleUrls: ['app/book/book.componentstyle.css'],
+    styleUrls: ['app/common/style.css','app/book/book.componentstyle.css'],
     providers: [LangCodesService, HTTPTestService]
  })
 
@@ -19,11 +22,12 @@ export class BookComponent implements OnInit {
     langCodes: LanguageCode[] = [];
     years: number[] = [];
     book: Book = new Book();//book is a property of class BOOK(data type)
+    chapter: Chapter = new Chapter();
     editing: boolean = true;
     isDetails: boolean = false;
 
     constructor( public _langCodesService: LangCodesService, 
-                    public _httpService : HTTPTestService, public route : ActivatedRoute, public bookService: BookService) {//_langCodesService is an object of LangCodesService
+                    public _httpService : HTTPTestService, public route : ActivatedRoute, public bookService: BookService, public _chapterService: ChapterService) {//_langCodesService is an object of LangCodesService
     //constructor creates these objects but their functionality is defined in ngoninit 
    
   }

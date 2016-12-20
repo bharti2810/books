@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {BookComponent} from '../book/book.component';
 import {BookListComponent} from '../book/booklist.component';
 import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
+import {ChapterComponent} from '../book/chapter/chapter.component';
 
 @NgModule({
     imports:        [BrowserModule, FormsModule, HttpModule,Ng2PaginationModule,
@@ -15,10 +16,11 @@ import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
         { path :'book/:idparam' ,  component: BookComponent }, //Displays book details but input fields are disabled
         { path:'' ,            component: BookListComponent },
          {path: 'books',       component: BookListComponent },
-         {path: '*',           component: BookComponent },
+         {path: '*',           component: BookListComponent },
+         {path: 'chapter/add', component: ChapterComponent},
     ], {useHash: true}) 
     ],
-    declarations: [BookComponent, AppComponent, BookListComponent],
+    declarations: [BookComponent, AppComponent, BookListComponent,ChapterComponent],
     bootstrap:      [AppComponent]
 })
 

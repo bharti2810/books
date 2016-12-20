@@ -1,10 +1,9 @@
 import {Component,OnInit} from '@angular/core';
 import {BookService} from '../common/books.service';
-import {NgFor} from '@angular/common';
 import {Book} from '../common/book.model';
 import {Router} from '@angular/router';
 import {Ng2PaginationModule} from 'ng2-pagination';
-import {ActivatedRoute, Params} from '@angular/router';
+
  @Component({
      selector: 'booklist',
   template: `<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

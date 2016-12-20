@@ -1,32 +1,33 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<h1> Book Submission</h1>
+<h1> Chapter Submission</h1>
+
 <form method="post">
     <div class="col-2">
-        <label>Title         
-    <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
+        <label>Id         
+    <input type="text" name="id" placeholder="Title" [(ngModel)]='chapter.title'   [readOnly]="!editing" required><br><br>
       </label>
     </div>
+
     <div class="col-3">
-        <label>Author       
-    <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
+        <label>Title     
+    <input type="text" name="title" placeholder="Author" [(ngModel)]='chapter.author' required [readOnly]="!editing"><br><br>
       </label>
     </div>
+
     <div class="col-2">
-        <label>Publication Year
-
-
-    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
-      <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years is an array -->
+        <label>Successor
+    <select aria-label=" Publication Year" name="pub_year" id="chapter" title="Chapter" class="_5dba" placeholder="Chapter"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
+      <option *ngFor="let predecessor of years" value="{{predecessor}}">{{year}}</option> 
     </select>
     </label>
 
     </div>
     <div class="col-3">
 
-        <label for="Langauge     ">Langauge
-    <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
-      <option *ngFor="let lang of langCodes" value="{{lang}}">{{lang.code}} - {{lang.name}}</option>
+        <label for="Langauge">Predecessor
+    <select id="Langauge" name="Langauge" [(ngModel)]="chapter." [disabled]="!editing" >
+      <option *ngFor="let successor of  value="{{s}}">{{lang.code}} - {{lang.name}}</option>
     </select>
     </label>
     </div>
