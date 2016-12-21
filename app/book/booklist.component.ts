@@ -19,7 +19,7 @@ import {Ng2PaginationModule} from 'ng2-pagination';
       </tr>
     </thead>
   <tbody >
-   <tr (click)="router.navigate(['/book', book.id])" *ngFor="let book of _bookService.getBooks() | paginate: { itemsPerPage: 10, currentPage: p }">
+   <tr [routerLink]= "['/book', book.id]" *ngFor="let book of _bookService.getBooks() | paginate: { itemsPerPage: 10, currentPage: p }">
    <td >{{book.id}}</td>  
    <td >{{book.title}}</td>
 

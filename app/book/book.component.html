@@ -24,9 +24,9 @@
     </div>
     <div class="col-3">
 
-        <label for="Langauge     ">Langauge
+        <label for="Langauge">Langauge
     <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
-      <option *ngFor="let lang of langCodes" value="{{lang}}">{{lang.code}} - {{lang.name}}</option>
+      <option *ngFor="let lang of langCodes" value="{{lang.name}}">{{lang.code}} - {{lang.name}}</option>
     </select>
     </label>
     </div>
@@ -40,7 +40,7 @@
 <a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">Collapsible list group</a>
 <div id="collapse1" class="panel-collapse collapse">
     <ul class="list-group">
-        <li class="list-group-item" (click)="router.navigate(['/book', book.id])" *ngFor="let chapter of _chapterService.getChapters()"> {{chapter.id}}-{{chapter.title}}</li>
+        <li class="list-group-item" [routerLink]="['/chapter', chapter.id]" *ngFor="let chapter of _chapterService.getChapters() "> {{chapter.id}}-{{chapter.title}}</li>
 
     </ul>
 

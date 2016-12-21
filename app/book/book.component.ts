@@ -9,6 +9,7 @@ import {ChapterService} from '../common/chapters.service';
 import {Chapter} from '../common/chapter.model';
 
 
+
 @Component({
     selector: 'book',
     templateUrl: 'app/book/book.component.html',
@@ -30,9 +31,10 @@ export class BookComponent implements OnInit {
                     public _httpService : HTTPTestService, public route : ActivatedRoute, public bookService: BookService, public _chapterService: ChapterService) {//_langCodesService is an object of LangCodesService
     //constructor creates these objects but their functionality is defined in ngoninit 
    
-  }
+  } 
+  
 
-  ngOnInit() {
+ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if(params['idparam'] !== undefined) {
         var index = this.bookService.getIndexByBookId(params['idparam']);
@@ -41,6 +43,7 @@ export class BookComponent implements OnInit {
         this.isDetails = true;
       }
     });
+    
     this.langCodes = this._langCodesService.getLanguageCodes();
      for (var i = 2016; i >= 1990; i--) {
       this.years.push(i);
