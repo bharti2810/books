@@ -52,9 +52,9 @@ export class BookComponent implements OnInit {
     console.log("Selected year: ", year);
   }
 
-  onTestPost(){
+  postBook(){
             
-            this._httpService.postJSON(this.book).subscribe(//postJSON is a method to post JSON data
+            this._httpService.postJSON("/books", this.book).subscribe(//postJSON is a method to post JSON data
             data => this.postData = JSON.stringify(data),
             error => alert(error),
             () => console.log(this.postData)//() is used for completed notification

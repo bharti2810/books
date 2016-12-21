@@ -12,12 +12,13 @@ import {ChapterComponent} from '../book/chapter/chapter.component';
 @NgModule({
     imports:        [BrowserModule, FormsModule, HttpModule,Ng2PaginationModule,
     RouterModule.forRoot([
-        { path :'books/add' ,  component: BookComponent }, //Displays add book form
-        { path :'book/:idparam' ,  component: BookComponent }, //Displays book details but input fields are disabled
-        { path:'' ,            component: BookListComponent },
-         {path: 'books',       component: BookListComponent },
-         {path: '*',           component: BookListComponent },
-         {path: 'chapter/add', component: ChapterComponent},
+            { path: 'books/add',         component: BookComponent }, //Displays add book form
+            { path: 'book/:idparam',     component: BookComponent }, //Displays book details but input fields are disabled
+            { path: '',                  component: BookListComponent },
+            { path: 'books',             component: BookListComponent },
+            { path: '*',                 component: BookListComponent },
+            { path: 'chapter/add',       component: ChapterComponent },
+            { path: 'chapter/:idparam' , component: ChapterComponent},
     ], {useHash: true}) 
     ],
     declarations: [BookComponent, AppComponent, BookListComponent,ChapterComponent],

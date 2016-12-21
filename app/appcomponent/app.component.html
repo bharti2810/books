@@ -1,24 +1,24 @@
 <div class="bg_color">
-<h2>
-    <a [routerLink]="['/']"></a>
-</h2>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">BOOK WORLD</a>
-    </div>
-    <ul class="nav navbar-nav">
-     
-      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Add <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li><a [routerLink]="['/books/add']">Book</a></li>
-        </ul>
-      </li>
-    </ul>
-  </div>
-</nav>
-<div>
+    <h2>
+        <a [routerLink]="['/']"></a>
+    </h2>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">BOOK WORLD</a>
+            </div>
+            <ul class="nav navbar-nav">
 
-    <router-outlet></router-outlet>
-</div>
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Add <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/books/add']">Book</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+
+        <router-outlet></router-outlet>
+    </div>
 </div>

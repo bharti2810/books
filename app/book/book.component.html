@@ -32,14 +32,15 @@
     </div>
     <div class="col-submit">
         <br><br>
-        <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : onTestPost()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
+        <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
         <a class="editbutton" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</a>
+        <a class="editbutton" *ngIf="isDetails" [routerLink]="['/chapter/add']"> {{editing ? "Save": "Add Chapter"}}</a>
     </div>
 </form>
 <a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">Collapsible list group</a>
 <div id="collapse1" class="panel-collapse collapse">
     <ul class="list-group">
-        <li class="list-group-item" *ngFor="let chapter of _chapterService.getChapters()"> {{chapter.id}}-{{chapter.title}}</li>
+        <li class="list-group-item" (click)="router.navigate(['/book', book.id])" *ngFor="let chapter of _chapterService.getChapters()"> {{chapter.id}}-{{chapter.title}}</li>
 
     </ul>
 
