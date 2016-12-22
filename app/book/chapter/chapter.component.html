@@ -7,40 +7,40 @@
         <label>Id         
     <input type="text" name="id" placeholder="Id" [(ngModel)]='chapter.id'  [readOnly]="!editing" required><br><br>
       </label>
-    </div>
+        < </div>
 
-    <div class="col-3">
-        <label>Title     
+            <div class="col-3">
+                <label>Title     
     <input type="text" name="title" placeholder="Title" [(ngModel)]='chapter.title' required [readOnly]="!editing"><br><br>
       </label>
-    </div>
+            </div>
 
-    <div class="col-2">
-        <label>Successor
+            <div class="col-2">
+                <label>Successor
     <select aria-label ="successor" name="successor" id="chapter" title="Chapter" class="_5dba" placeholder="Chapter"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
-      <option *ngFor="let chapter of _chapterService.getChapters()" value="{{chapter.successor}}">{{chapter.successor}}</option> 
+      <option *ngFor="let chapter of _chapterService.getChapters()" value="{{chapter.id}}">{{chapter.successor}}</option> 
     </select>
     </label>
 
-    </div>
-    <div class="col-3">
+            </div>
+            <div class="col-3">
 
-        <label for="Successor">Predecessor
+                <label for="Successor">Predecessor
     <select id="Successor" name="Successor" [(ngModel)]="chapter.predecessor" [disabled]="!editing" >
-      <option *ngFor="let chapter of _chapterService.getChapters()" value="{{chapter.predecessor}}">{{chapter.predecessor}}</option>
+      <option *ngFor="let chapter of _chapterService.getChapters()" value="{{chapter.id}}">{{chapter.predecessor}}</option>
     </select>
     </label>
-    </div>
-    <div class="col-submit">
-        <br><br>
-        <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? chapterService.delete(book) : postChapter()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
-        <a class="editbutton" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</a>
-        <a class="editbutton" *ngIf="isDetails" [ routerLink]="['/chapter/add']"> {{editing ? "Save": "Add"}}</a>
-    </div>
+            </div>
+            <div class="col-submit">
+                <br><br>
+                <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails ? _chapterService.delete(chapter) : postChapter()" [routerLink]=" ['/books'] "> {{isDetails ? " Delete ":"Add "}}</a>
+                <a class="editbutton " *ngIf="isDetails " (click)="edit() ">{{editing ? "Save ":"Edit "}}</a>
+                <a class="editbutton " *ngIf="isDetails " [routerLink]=" ['/chapter/add'] "> {{editing ? "Save ": "Add "}}</a>
+            </div>
 </form>
-<a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">Collapsible list group</a>
-<div id="collapse1" class="panel-collapse collapse">
-    <ul class="list-group">
-        <li class="list-group-item" [routerLink]="['/chapter', chapter.id]" *ngFor="let chapter of _chapterService.getChapters()"> {{chapter.id}}-{{chapter.title}}</li>
+<a *ngIf="isDetails" data-toggle="collapse" href="#collapse1 ">Collapsible list group</a>
+<div id="collapse1" class="panel-collapse collapse ">
+    <ul class="list-group ">
+        <li class="list-group-item" [routerLink]=" ['/chapter', chapter.id] " *ngFor="let chapter of _chapterService.getChapters() "> {{chapter.id}}-{{chapter.title}}</li>
     </ul>
 </div>

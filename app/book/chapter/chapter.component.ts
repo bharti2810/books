@@ -4,7 +4,8 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { ChapterService } from '../../common/chapters.service';
 import { Chapter } from '../../common/chapter.model';
 import { Router } from '@angular/router';
-
+import {BookService} from '../../common/books.service';
+import {Book} from '../../common/book.model';
 @Component({
   selector: 'chapter',
   templateUrl: 'app/book/chapter/chapter.component.html',
@@ -36,7 +37,7 @@ export class ChapterComponent implements OnInit {
 
   postChapter() {
 
-    this._httpService.postJSON("/chapter", this.chapter).subscribe(//postJSON is a method to post JSON data
+    this._httpService.postJSON("/chapters", this.chapter).subscribe(//postJSON is a method to post JSON data
       data => this.postData = JSON.stringify(data),
       error => alert(error),
       () => console.log(this.postData)//() is used for completed notification
