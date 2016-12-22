@@ -1,47 +1,53 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <h1> {{isDetails ? "Book Details":"Book Submission"}}</h1>
-<form method="post">
-    <div class="col-2">
-        <label>Title         
-    <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
-      </label>
+<div class="container">
+    <form method="post">
+        <div class="col-2 form-group">
+            <label>Title         
+                <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
+            </label>
+        </div>
+
+        <div class="col-2 form-group">
+            <label>Author       
+                <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
+        </label>
+        </div>
+
+        <div class="col-2 form-group">
+            <label>Publication Year
+                <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
+                    <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years is an array -->
+                </select>
+            </label>
+        </div>
+
+        <div class="col-2 form-group">
+            <label for="Langauge">Langauge
+                <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
+                <option *ngFor="let lang of langCodes" value="{{lang.name}}">{{lang.code}} - {{lang.name}}</option>
+                </select>
+            </label>
+        </div>
+        <div class="col-1 form-group">
+            <div class="form-btns">
+                <button type="submit" class="btn btn-danger btn1" (click)="isDetails? bookService.delete(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</button>
+                <button type="submit" class="btn btn-primary btn1" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</button>
+                <button type="submit" class="btn btn-primary btn1" *ngIf="isDetails" [routerLink]="['/chapter/add']"> {{editing ? "Save": "Add Chapter"}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+<br><br>
+<div class="container">
+    <div class="chap-list-header">
+        <a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">List of Chapters</a>
+    </div><br>
+    <div id="collapse1" class="panel-collapse collapse chap-list">
+        <div class="list-group">
+            <a class="list-group-item" [routerLink]="['/chapter', chapter.id]" *ngFor="let chapter of _chapterService.getChapters() "> {{chapter.id}}-{{chapter.title}}
+            </a>
+        </div>
     </div>
-    <div class="col-3">
-        <label>Author       
-    <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
-      </label>
-    </div>
-    <div class="col-2">
-        <label>Publication Year
-
-
-    <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
-      <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years is an array -->
-    </select>
-    </label>
-
-    </div>
-    <div class="col-3">
-
-        <label for="Langauge">Langauge
-    <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
-      <option *ngFor="let lang of langCodes" value="{{lang.name}}">{{lang.code}} - {{lang.name}}</option>
-    </select>
-    </label>
-    </div>
-    <div class="col-submit">
-        <br><br>
-        <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
-        <a class="editbutton" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</a>
-        <a class="editbutton" *ngIf="isDetails" [routerLink]="['/chapter/add']"> {{editing ? "Save": "Add Chapter"}}</a>
-    </div>
-</form>
-<a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">Collapsible list group</a>
-<div id="collapse1" class="panel-collapse collapse">
-    <ul class="list-group">
-        <li class="list-group-item" [routerLink]="['/chapter', chapter.id]" *ngFor="let chapter of _chapterService.getChapters() "> {{chapter.id}}-{{chapter.title}}</li>
-
-    </ul>
-
 </div>

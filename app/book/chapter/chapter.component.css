@@ -3,7 +3,7 @@ h1 {
     font-family: 'Noticia Text', serif;
     text-align: center;
     color: dimgrey;
-    font-size: 40px;
+    font-size: 32px;
 }
 
 form {
@@ -20,9 +20,6 @@ form {
 @media(min-width:800px) {
     form>div {
         display: inline-block;
-    }
-    form>div.col-submit {
-        display: block;
     }
 }
 
@@ -54,11 +51,14 @@ form>div.col-4 {
 }
 
 @media(min-width:800px) {
+    form>div.col-1 {
+        width: 100%
+    }
     form>div.col-2 {
         width: 50%
     }
     form>div.col-3 {
-        width: 50%
+        width: 33%
     }
     form>div.col-4 {
         width: 25%
@@ -83,57 +83,6 @@ form>div>label>input {
     transition: opacity .3s, box-shadow .3s;
 }
 
-form>div.col-submit {
-    text-align: center;
-    padding: 30px;
-}
-
-.deletebutton {
-    border: 1px solid #E4E4E4;
-    background: "getStyle()";
-    font-size: 14px;
-    color: #fff;
-    padding: 10px 15px;
-    display: inline;
-    cursor: pointer;
-    border: 0;
-    border-radius: 5px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.editbutton {
-    border: 1px solid #E4E4E4;
-    font-size: 14px;
-    color: #fff;
-    padding: 10px 22px;
-    display: inline;
-    width: 100%;
-    cursor: pointer;
-    border: 0;
-    border-radius: 5px;
-    text-transform: uppercase;
-    background: #31bc86;
-}
-
-@media(min-width: 800px) {
-    form>div.col-submit a.deletebutton {
-        width: 20%;
-        margin: 10%;
-    }
-}
-
-@media(min-width: 800px) {
-    form>div.col-submit a.editbutton {
-        width: 30%;
-        margin: 40px;
-    }
-}
-
-form>div.col-submit a:hover {
-    background: #92BDBD;
-}
-
 form>div>label>select {
     display: block;
     width: 100%;
@@ -151,4 +100,43 @@ form>div>label>input:focus,
 form>div>label>select:focus {
     opacity: 1;
     box-shadow: 0 3px 4px rgba(0, 0, 0, .15);
+}
+
+a.list-group-item {
+    color: cornflowerblue;
+    font-size: 15px;
+    font-family: 'Noticia Text', serif;
+    background-color: white;
+}
+
+.btn1 {
+    margin-left: 10px;
+}
+
+.form-btns {
+    float: right;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 635px) {
+    .btn1 {
+        width: 100%;
+    }
+}
+
+.chap-list-header {
+    text-align: center;
+    color: grey;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: 'Noticia Text', serif;
+}
+
+.chap-list {
+    width: 50%;
+    height: 60%;
+}
+
+#collapse1 {
+    margin: auto;
 }
