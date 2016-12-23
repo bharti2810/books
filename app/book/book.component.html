@@ -34,7 +34,7 @@
         <br><br>
         <a class="deletebutton" [style.background-color]="getStyle()" (click)="isDetails? bookService.delete(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</a>
         <a class="editbutton" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</a>
-        <a class="editbutton" *ngIf="isDetails" [routerLink]="['/chapters/add']"> {{editing ? "Save": "Add Chapter"}}</a>
+        <a class="editbutton" *ngIf="isDetails" [routerLink]="['/chapter/add']"> {{editing ? "Save": "Add Chapter"}}</a>
     </div>
 </form>
 <a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">Collapsible list group</a>
