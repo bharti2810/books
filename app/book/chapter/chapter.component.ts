@@ -20,7 +20,7 @@ export class ChapterComponent implements OnInit {
   isDetails: boolean = false;
 
   constructor(public _httpService: HTTPTestService, public route: ActivatedRoute, public _chapterService: ChapterService, private router: Router) { }//_langCodesService is an object of LangCodesService
-  //constructor creates these objects but their functionality is defined in ngoninit 
+  //constructor
 
 
   ngOnInit() {
@@ -36,7 +36,6 @@ export class ChapterComponent implements OnInit {
   }
 
   postChapter() {
-
     this._httpService.postJSON("/chapters", this.chapter).subscribe(//postJSON is a method to post JSON data
       data => this.postData = JSON.stringify(data),
       error => alert(error),
@@ -44,17 +43,6 @@ export class ChapterComponent implements OnInit {
     );
   }
 
-
-
-  getStyle() {
-    if (this.editing === false) {
-      return "#e53935";
-    }
-    else {
-      return "#31bc86";
-    }
-
-  }
   edit() {
     this.editing = !this.editing;
   }
