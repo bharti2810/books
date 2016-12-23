@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { HTTPTestService } from '../../common/http-test.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { ChapterService } from '../../common/chapters.service';
 import { Chapter } from '../../common/chapter.model';
 import { Router } from '@angular/router';
 import {BookService} from '../../common/books.service';
 import {Book} from '../../common/book.model';
+
 @Component({
   selector: 'chapter',
   templateUrl: 'app/book/chapter/chapter.component.html',
@@ -18,17 +18,20 @@ export class ChapterComponent implements OnInit {
   chapter: Chapter = new Chapter();
   editing: boolean = true;
   isDetails: boolean = false;
+  bookId: string;
 
-  constructor(public _httpService: HTTPTestService, public route: ActivatedRoute, public _chapterService: ChapterService, private router: Router) { }//_langCodesService is an object of LangCodesService
+  constructor(public _httpService: HTTPTestService, public route: ActivatedRoute, private router: Router, public _bookService : BookService) { }
+  //_langCodesService is an object of LangCodesService
   //constructor
 
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      if (params['idparam'] !== undefined) {
+      this.bookId = params['bookId'];
 
-        var index = this._chapterService.getIndexByChapterId(params['idparam']);
-        this.chapter = this._chapterService.getChapters()[index];
+      if (params['idparam'] !== undefined) {
+        var index = this._bookService.getIndexByChapterId(this.bookId, params['idparam']);
+        this.chapter = this._bookService.getChapters(this.bookId)[index];
         this.editing = false;
         this.isDetails = true;
       }

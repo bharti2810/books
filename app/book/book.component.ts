@@ -3,12 +3,9 @@ import {LanguageCode} from '../common/langcode.model';
 import {Book} from '../common/book.model';
 import {LangCodesService} from '../common/langcodes.service';
 import {HTTPTestService} from '../common/http-test.service';
-import {ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BookService} from '../common/books.service';
-import {ChapterService} from '../common/chapters.service';
 import {Chapter} from '../common/chapter.model';
-
-
 
 @Component({
     selector: 'book',
@@ -27,13 +24,12 @@ export class BookComponent implements OnInit {
     editing: boolean = true;
     isDetails: boolean = false;
 
-    constructor( public _langCodesService: LangCodesService, 
-                    public _httpService : HTTPTestService, public route : ActivatedRoute, public bookService: BookService, public _chapterService: ChapterService) {//_langCodesService is an object of LangCodesService
+    constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService, 
+                    public route : ActivatedRoute, public router : Router, public bookService: BookService) {//_langCodesService is an object of LangCodesService
     //constructor creates these objects but their functionality is defined in ngoninit 
    
   } 
   
-
 ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if(params['idparam'] !== undefined) {
@@ -56,27 +52,14 @@ ngOnInit() {
   }
 
   postBook(){
-            
-            this._httpService.postJSON("/books", this.book).subscribe(//postJSON is a method to post JSON data
+        this._httpService.postJSON("/books", this.book).subscribe(//postJSON is a method to post JSON data
             data => this.postData = JSON.stringify(data),
             error => alert(error),
-            () => console.log(this.postData)//() is used for completed notification
-);
-            
+            () => console.log(this.postData)); //() is used for completed notification
   }
 
-    getStyle(){
-        if(this.editing === false)
-        {
-          return "#e53935";
-        }
-        else{
-          return "#31bc86";
-        }
-       
-  }
-  edit()
-   {
+    
+  edit() {
     this.editing= !this.editing;
    }
 }
