@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text');
-h1 {
+h1,
+h2 {
     font-family: 'Noticia Text', serif;
     text-align: center;
     color: dimgrey;
@@ -35,6 +36,11 @@ form>div>label {
     cursor: pointer;
 }
 
+form>div#title {
+    text-align: center;
+}
+
+form>div#title,
 form>div.col-2,
 form>div.col-3,
 form>div.col-4 {
@@ -42,6 +48,7 @@ form>div.col-4 {
 }
 
 @media(min-width: 800px) {
+    form>div#title,
     form>div.col-2,
     form>div.col-3,
     form>div.col-4 {
@@ -63,6 +70,20 @@ form>div.col-4 {
     form>div.col-4 {
         width: 25%
     }
+}
+
+form>div>label.book_title {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding: 7px 5px 3px;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 200;
+    opacity: .66;
 }
 
 form>div>label>input {
