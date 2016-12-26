@@ -751,5 +751,5 @@ export class LangCodesService {
 
   getLanguageCodes(): LanguageCode[] {
     return this.codes;
-  };
+  }
 }

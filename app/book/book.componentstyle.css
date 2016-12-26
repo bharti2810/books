@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Noticia+Text');
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:400,300');
 h1 {
     font-family: 'Noticia Text', serif;
     text-align: center;
@@ -43,6 +44,11 @@ form>div>label {
     cursor: pointer;
 }
 
+div>form>div#grade {
+    text-align: center;
+}
+
+form>div#grade,
 form>div.col-2,
 form>div.col-3,
 form>div.col-4 {
@@ -50,6 +56,7 @@ form>div.col-4 {
 }
 
 @media(min-width: 800px) {
+    form>div#grade,
     form>div.col-2,
     form>div.col-3,
     form>div.col-4 {
@@ -147,4 +154,52 @@ a.list-group-item {
 
 #collapse1 {
     margin: auto;
+}
+
+.gradebox ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gradebox ul li {
+    display: inline-block;
+    margin: 0 .3em .3em 0;
+    padding: 0;
+}
+
+.gradebox ul li a {
+    display: inline-block;
+    max-width: 100px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0 1em;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: #333;
+    font-size: 13px;
+    text-decoration: none;
+    -webkit-transition: .2s;
+    transition: .2s;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+}
+
+.gradebox ul li a:hover {
+    background-color: #3498db;
+    border: 1px solid #3498db;
+    color: #fff;
+}
+
+div.gradebox {
+    width: 100%;
+    margin: 5em auto 2.5em;
+}
+
+div.gradebox:first-child {
+    margin-top: 3em;
 }

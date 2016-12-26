@@ -10,26 +10,39 @@
         </div>
 
         <div class="col-2 form-group">
-            <label>Author       
+            <label>Author    
                 <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
-        </label>
+            </label>
         </div>
 
         <div class="col-2 form-group">
             <label>Publication Year
-                <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" class="_5dba" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
-                    <option *ngFor="let year of years" value="{{year}}">{{year}}</option> <!--year is a variable and years is an array -->
+                <select aria-label=" Publication Year" name="pub_year" id="year" title="Year" placeholder="Year"  [(ngModel)]='book.publicationYear' [disabled]="!editing" required>
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option> <!--year is a variable and years is an array -->
+                </select>
+            </label>
+        </div>
+        <div class="col-2 form-group">
+            <label for="Langauge">Langauge
+                <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" required>
+                    <option *ngFor="let lang of langCodes" [attr.selected]="book.language === lang.code ? true : null" [ngValue]="lang.code">{{lang.code}} - {{lang.name}}</option>
                 </select>
             </label>
         </div>
 
-        <div class="col-2 form-group">
-            <label for="Langauge">Langauge
-                <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" >
-                <option *ngFor="let lang of langCodes" value="{{lang.name}}">{{lang.code}} - {{lang.name}}</option>
-                </select>
-            </label>
+        <div id="grade" class="col-1 form-group">
+            <label>Grades</label>
+            <div class="gradebox">
+                <ul>
+                    <li><a href="#">Grade 1</a></li>
+                    <li><a href="#">Grade 2</a></li>
+                    <li><a href="#">Grade 3</a></li>
+                    <li><a href="#">Grade 4</a></li>
+                    <li><a href="#">Grade 5</a></li>
+                </ul>
+            </div><br>
         </div>
+
         <div class="col-1 form-group">
             <div class="form-btns">
                 <button type="button" class="btn btn1" [class.btn-danger]="isDetails" [class.btn-primary]="!isDetails" (click)="isDetails? bookService.deleteBook(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</button>
