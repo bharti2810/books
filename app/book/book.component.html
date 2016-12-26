@@ -25,7 +25,7 @@
         <div class="col-2 form-group">
             <label for="Langauge">Langauge
                 <select id="Langauge" name="Langauge" [(ngModel)]="book.language" [disabled]="!editing" required>
-                    <option *ngFor="let lang of langCodes" [attr.selected]="book.language === lang.code ? true : null" [ngValue]="lang.code">{{lang.code}} - {{lang.name}}</option>
+                    <option *ngFor="let lang of langCodes" [value]="lang.code">{{lang.code}} - {{lang.name}}</option>
                 </select>
             </label>
         </div>
