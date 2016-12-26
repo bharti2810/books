@@ -38,16 +38,16 @@ export class BookService{
         ];
 
     private chapters: Chapter[] = [
-            { id: '1', index: 0, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '2', index: 1, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '3', index: 2, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '4', index: 3, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '5', index: 4, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '6', index: 5, title: 'Atoms and Molecules', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '7', index: 6, title: 'isotopes', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '8', index: 7, title: 'isotopes', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '9', index: 8, title: 'polymers', successor: 'isotopes', predecessor: 'polymers', },
-            { id: '10', index: 9, title: 'polymers', successor: 'isotopes', predecessor: 'polymers', }
+            { id: '1', index: 0, title: 'Atoms and Molecules', successor: '2', predecessor: '', },
+            { id: '2', index: 1, title: 'Atoms and Molecules', successor: '3', predecessor: '1', },
+            { id: '3', index: 2, title: 'Atoms and Molecules', successor: '4', predecessor: '2', },
+            { id: '4', index: 3, title: 'Atoms and Molecules', successor: '5', predecessor: '3', },
+            { id: '5', index: 4, title: 'Atoms and Molecules', successor: '6', predecessor: '4', },
+            { id: '6', index: 5, title: 'Atoms and Molecules', successor: '7', predecessor: '5', },
+            { id: '7', index: 6, title: 'isotopes', successor: '8', predecessor: '6', },
+            { id: '8', index: 7, title: 'isotopes', successor: '9', predecessor: '7', },
+            { id: '9', index: 8, title: 'polymers', successor: '10', predecessor: '8', },
+            { id: '10', index: 9, title: 'polymers', successor: '', predecessor: '9', }
         ];
 
     private bookChapters : Chapter[][] = [];
@@ -104,10 +104,17 @@ export class BookService{
     }
 
 
-     getBook(bookId):Book //Book(from book.model.ts) class is return type of function getBook
-     {
+    getBook(bookId):Book { //Book(from book.model.ts) class is return type of function getBook
+    
         var index = this.getIndexByBookId(bookId);
         return  this.books[index];//books is an array and this means that that an element with a particular index of books array is returned.
-     }
-  }
+    }
+
+
+    getChapter(bookId : string, chapId: string):Chapter { //Book(from book.model.ts) class is return type of function getBook
+        var index = this.getIndexByChapterId(bookId,chapId);
+        return  this.getChapters(bookId)[index];//books is an array and this means that that an element with a particular index of books array is returned.
+    }
+}
+
 

@@ -20,24 +20,27 @@ export class ChapterComponent implements OnInit {
   chapter: Chapter = new Chapter();
   editing: boolean = true;
   isDetails: boolean = false;
-  bookId:string;
-  book:Book;//book is an object of class type Book
+  book:Book;//book is an object of type Book
+  predecessor: Chapter;
+  successor: Chapter;
 
   constructor(public _httpService: HTTPTestService, public route: ActivatedRoute, private router: Router, public _bookService : BookService) { }
   //_langCodesService is an object of LangCodesService
   //constructor
 
-
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       var bookId = params['bookId'];
       this.book =this._bookService.getBooks()[this._bookService.getIndexByBookId(bookId)];
-
+      
       if (params['idparam'] !== undefined) {
         var index = this._bookService.getIndexByChapterId(bookId, params['idparam']);
         this.chapter = this._bookService.getChapters(bookId)[index];
         this.editing = false;
         this.isDetails = true;
+
+        this.predecessor = this._bookService.getChapter(this.book.id, this.chapter.predecessor);
+        this.successor = this._bookService.getChapter(this.book.id, this.chapter.successor);
       }
     });
   }

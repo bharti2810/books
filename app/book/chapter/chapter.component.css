@@ -80,7 +80,7 @@ form>div.col-4 {
     }
 }
 
-form>div>label.book_title {
+form>div>label.form_value {
     display: inline-block;
     position: relative;
     width: 100%;

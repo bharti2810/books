@@ -3,7 +3,7 @@
     <form method="post">
         <div id="title" class="col-1 form-group">
             <label>Book Title</label>
-            <label class="book_title">{{book.title}}</label>
+            <label class="form_value">{{book.title}}</label>
         </div>
         <div class="col-2 form-group">
             <label>Id         
@@ -19,24 +19,28 @@
 
         <div class="col-2 form-group">
             <label>Successor
-                <select aria-label ="successor" name="successor" id="chapter" title="Chapter" class="_5dba" placeholder="Chapter"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
-                    <option *ngFor="let chapter of _bookService.getChapters(book.id)" value="{{chapter.id}}">{{chapter.successor}}</option> 
+                <a class="form_value" *ngIf="isDetails" [routerLink]="[ '/chapter', successor ? successor.id : '', { bookId : book.id }] ">{{ successor ? successor.title : '' }}</a>
+                <select *ngIf="!isDetails" name="successor"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
+                    <option  *ngFor="let chapter of _bookService.getChapters(book.id)" value="{{ chapter.successor }}">{{ chapter.title }}</option> 
                 </select>
             </label>
         </div>
 
         <div class="col-2 form-group">
-            <label for="Successor">Predecessor
-                <select id="Successor" name="Successor" [(ngModel)]="chapter.predecessor" [disabled]="!editing" >
-                    <option *ngFor="let chapter of _bookService.getChapters(book.id)" value="{{chapter.id}}">{{chapter.predecessor}}</option>
+            <label> Predecessor 
+                <a class="form_value" *ngIf="isDetails" [routerLink]="[ '/chapter', predecessor ? predecessor.id : '', { bookId : book.id }] ">{{ predecessor ? predecessor.title : '' }}</a>
+                <select *ngIf="!isDetails" name="predecessor"   [(ngModel)]='chapter.predecessor' [disabled]="!editing" required> 
+                        <option *ngFor="let chapter of _bookService.getChapters(book.id)" value ="{{ chapter.predecessor }}">{{ chapter.title }}</option>
                 </select>
             </label>
         </div>
 
         <div class="col-1 form-group">
             <div class="form-btns">
-                <button type="button" class="btn btn1" [class.btn-danger]="isDetails" [class.btn-primary]="!isDetails" (click)="isDetails? _bookService.deleteChapter(book.id, chapter.id) : postChapter()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</button>
-                <button type="button" class="btn btn-primary btn1" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</button>
+                <button type="button " class="btn btn1" [class.btn-danger]="isDetails" [class.btn-primary]="!isDetails" (click)="isDetails? _bookService.deleteChapter(book.id, chapter.id) : postChapter()" [routerLink]="[ '/books']">
+                    {{isDetails ? "Delete":"Add"}}
+                </button>
+                <button type="button" class="btn btn-primary btn1" *ngIf="isDetails " (click)="edit() ">{{editing ? "Save":"Edit"}}</button>
             </div>
         </div>
     </form>
@@ -49,7 +53,7 @@
     <br>
     <div id="collapse1" class="panel-collapse collapse chap-list">
         <div class="list-group">
-            <a class="list-group-item" [routerLink]="['/chapter', chapter.id, { bookId : book.id }]" *ngFor="let chapter of _bookService.getChapters(book.id)"> {{chapter.id}}-{{chapter.title}}</a>
+            <a class="list-group-item" [routerLink]="[ '/chapter', chapter.id, { bookId : book.id }] " *ngFor="let chapter of _bookService.getChapters(book.id) ">{{chapter.id}}-{{chapter.title}}</a>
         </div>
     </div>
 </div>
