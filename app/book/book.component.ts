@@ -7,6 +7,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BookService} from '../common/books.service';
 import {Chapter} from '../common/chapter.model';
 
+
 @Component({
     selector: 'book',
     templateUrl: 'app/book/book.component.html',

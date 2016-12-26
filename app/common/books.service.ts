@@ -104,10 +104,10 @@ export class BookService{
     }
 
 
-getBook(bookId):Book //Book(from book.model.ts) class is return type of function getBook
-{
-  var index = this.getIndexByBookId(bookId);
- return  this.books[index];//books is an array and this means that that an element with a particular index of books array is returned.
-}
-}
+     getBook(bookId):Book //Book(from book.model.ts) class is return type of function getBook
+     {
+        var index = this.getIndexByBookId(bookId);
+        return  this.books[index];//books is an array and this means that that an element with a particular index of books array is returned.
+     }
+  }
 

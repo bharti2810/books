@@ -34,7 +34,7 @@
             <div class="form-btns">
                 <button type="button" class="btn btn-danger btn1" (click)="isDetails? bookService.deleteBook(book) : postBook()" [routerLink]="['/books']">{{isDetails ? "Delete":"Add"}}</button>
                 <button type="button" class="btn btn-primary btn1" *ngIf="isDetails" (click)="edit()">{{editing ? "Save":"Edit"}}</button>
-                <button type="button" class="btn btn-primary btn1" *ngIf="(isDetails && !editing)" [routerLink]="['/chapters/add']">Add Chapter</button>
+                <button type="button" class="btn btn-primary btn1" *ngIf="(isDetails && !editing)" [routerLink]="['/chapters/add', { bookId : book.id }]">Add Chapter</button>
             </div>
         </div>
     </form>

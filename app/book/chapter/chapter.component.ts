@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import {BookService} from '../../common/books.service';
 import {Book} from '../../common/book.model';
 
+
+
 @Component({
   selector: 'chapter',
   templateUrl: 'app/book/chapter/chapter.component.html',
@@ -18,7 +20,8 @@ export class ChapterComponent implements OnInit {
   chapter: Chapter = new Chapter();
   editing: boolean = true;
   isDetails: boolean = false;
-  book:Book;//book is an object of type Book
+  bookId:string;
+  book:Book;//book is an object of class type Book
 
   constructor(public _httpService: HTTPTestService, public route: ActivatedRoute, private router: Router, public _bookService : BookService) { }
   //_langCodesService is an object of LangCodesService
