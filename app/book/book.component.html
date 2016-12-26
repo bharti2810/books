@@ -40,9 +40,9 @@
     </form>
 </div>
 <br><br>
-<div class="container">
+<div *ngIf="isDetails" class="container">
     <div class="chap-list-header">
-        <a *ngIf="isDetails" data-toggle="collapse" href="#collapse1">List of Chapters</a>
+        <a data-toggle="collapse" href="#collapse1">List of Chapters</a>
     </div><br>
     <div id="collapse1" class="panel-collapse collapse chap-list">
         <div class="list-group">
