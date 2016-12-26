@@ -5,3 +5,12 @@ h1 {
     font-size: 32px;
     color: dimgrey;
 }
+
+pagination-controls {
+    float: right;
+    margin: 0px;
+}
+
+.container {
+    margin: auto;
+}

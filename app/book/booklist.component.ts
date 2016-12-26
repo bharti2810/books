@@ -24,7 +24,7 @@ import {Ng2PaginationModule} from 'ng2-pagination';
         </tr>
       </tbody>
     </table>
- <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
     ` ,
   styleUrls: ['app/common/style.css','app/book/booklist.component.css'],
