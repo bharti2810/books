@@ -70,12 +70,11 @@ export class BookService{
       return this.books;
     }
 
-    getIndexByBookId(id: string) : number {//this compares the id fetched 
+    getIndexByBookId(id: string) : number {
         for(var i = 0; i < this.books.length; i++)
             if(this.books[i].id == id)
                 return i;
-        
-        return -1;
+         return -1;
     }
 
     deleteBook(book){
@@ -103,6 +102,12 @@ export class BookService{
             this.getChapters(bookId).splice(ind, 1);
         }
     }
-}
 
+
+getBook(bookId):Book //Book(from book.model.ts) class is return type of function getBook
+{
+  var index = this.getIndexByBookId(bookId);
+ return  this.books[index];//books is an array and this means that that an element with a particular index of books array is returned.
+}
+}
 

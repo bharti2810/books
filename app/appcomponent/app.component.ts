@@ -1,7 +1,7 @@
 
 import {Component} from '@angular/core';
 import {BookService}  from '../common/books.service';
-import {ChapterService}  from '../common/chapters.service';
+
 
 
 
@@ -10,7 +10,7 @@ import {ChapterService}  from '../common/chapters.service';
     selector: 'app',
     templateUrl: 'app/appcomponent/app.component.html',
     styleUrls: ['app/common/style.css','app/appcomponent/app.component.css'],
-    providers:[BookService, ChapterService]  
+    providers:[BookService]  
  })
 
 export class AppComponent {
