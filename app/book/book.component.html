@@ -1,6 +1,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<h1> {{isDetails ? "Book Details":"Book Submission"}}</h1>
+<h1> {{isDetails ? "Book Details":"Add Book"}}</h1>
 <div class="container">
     <form method="post">
         <div class="col-2 form-group">
@@ -32,7 +32,7 @@
 
         <div id="grade" class="col-1 form-group">
             <label>Grades</label>
-            <div class="gradebox">
+            <div *ngIf="isDetails" class="gradebox">
                 <ul>
                     <li><a href="#">Grade 1</a></li>
                     <li><a href="#">Grade 2</a></li>
@@ -40,7 +40,11 @@
                     <li><a href="#">Grade 4</a></li>
                     <li><a href="#">Grade 5</a></li>
                 </ul>
-            </div><br>
+            </div>
+            <div *ngIf="!isDetails" class="gradebox">
+                <rl-tag-input [(ngModel)]="tags" [ngModelOptions]="{standalone: true}" placeholder="Add grade">
+                </rl-tag-input>
+            </div>
         </div>
 
         <div class="col-1 form-group">

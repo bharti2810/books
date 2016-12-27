@@ -7,7 +7,6 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BookService} from '../common/books.service';
 import {Chapter} from '../common/chapter.model';
 
-
 @Component({
     selector: 'book',
     templateUrl: 'app/book/book.component.html',
@@ -28,9 +27,9 @@ export class BookComponent implements OnInit {
     constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService, 
                     public route : ActivatedRoute, public router : Router, public bookService: BookService) {//_langCodesService is an object of LangCodesService
     //constructor creates these objects but their functionality is defined in ngoninit 
-   
   } 
-  
+   public tags = ['Grade1', 'Grade2', 'Grade3'];
+   
 ngOnInit() {
     this.route.params.subscribe((params: Params) => {
       if(params['idparam'] !== undefined) {

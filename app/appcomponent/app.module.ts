@@ -8,9 +8,10 @@ import {BookComponent} from '../book/book.component';
 import {BookListComponent} from '../book/booklist.component';
 import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
 import {ChapterComponent} from '../book/chapter/chapter.component';
+import { RlTagInputModule } from 'angular2-tag-input';
 
 @NgModule({
-    imports:        [BrowserModule, FormsModule, HttpModule,Ng2PaginationModule,
+    imports:        [BrowserModule, FormsModule, HttpModule,Ng2PaginationModule,RlTagInputModule,
     RouterModule.forRoot([
             { path: '*',                 component: BookListComponent },
             { path: '',                  component: BookListComponent },
@@ -28,3 +29,4 @@ import {ChapterComponent} from '../book/chapter/chapter.component';
 export class AppModule {
 
 }
+

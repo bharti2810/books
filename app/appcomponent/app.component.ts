@@ -10,5 +10,4 @@ import {BookService}  from '../common/books.service';
  })
 
 export class AppComponent {
-   
  }
