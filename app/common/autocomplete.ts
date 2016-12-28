@@ -1,5 +1,7 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
-import {Book} from './autocomplete.model';
+import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import {BookService} from './books.service';
+import {CompleterService} from '../common/completer.service';
+
 
 @Component({
   selector: 'autocomplete',
@@ -11,7 +13,7 @@ import {Book} from './autocomplete.model';
 
     <ul id="list-group" class="list-group group-list" *ngIf="filteredList.length > 0">
         <li *ngFor="let item of filteredList" [class.active]="item.selected" [id]="item.selected" class="list-group-item item-list" (click)="select(item)">
-          {{ item.author }}
+          {{ extractValue(item, searchField) }}
         </li>
     </ul>
 
@@ -22,56 +24,50 @@ import {Book} from './autocomplete.model';
     '(keydown)': 'handleKeyDown($event)'
   },
 })
-export class AutoComplete {
 
+export class AutoComplete implements OnInit{
+  @Input('dataService') public dataService: CompleterService;
   query: string = '';
   filteredList: any[] = [];
   elementRef: ElementRef;
   pos: number = -1;
   opened: boolean = false;
   selectedItem: any;
-  item: Book;
-  items: Book[] = [
-  {id:1,title:'ncert',author:'Tata mcgraw hill',publicationYear:2002,language: 'en'},
-            {id:2,title:'ncert',author:'Tata mcgraw hill',publicationYear:2003,language: 'en'},
-            {id:3,title:'ncert',author:'Tata mcgraw hill',publicationYear:2004,language: 'en'},
-            {id:4,title:'ncert',author:'Tata mcgraw hill',publicationYear:2005,language: 'en'},
-            {id:5,title:'ncert',author:'Tata mcgraw hill',publicationYear:2006,language: 'en'},
-            {id:6,title:'ncert',author:'Tata mcgraw hill',publicationYear:2007,language: 'en'},
-            {id:7,title:'ncert',author:'Tata mcgraw hill',publicationYear:2008,language: 'en'},
-            {id:8,title:'ncert',author:'Tata mcgraw hill',publicationYear:2009,language: 'en'},
-            {id:9,title:'ncert',author:'Tata mcgraw hill',publicationYear:2010,language: 'en'},
-            {id:10,title:'ncert',author:'Tata mcgraw hill',publicationYear:2001,language: 'en'},
-            {id:11,title:'ncert',author:'Tata mcgraw hill',publicationYear:2002,language: 'en'},
-            {id:12,title:'ncert',author:'Tata mcgraw hill',publicationYear:2003,language: 'en'},
-            {id:13,title:'ncert',author:'Tata mcgraw hill',publicationYear:2004,language: 'en'},
-            {id:14,title:'ncert',author:'Tata mcgraw hill',publicationYear:2005,language: 'en'},
-            {id:15,title:'ncert',author:'Tata mcgraw hill',publicationYear:2006,language: 'en'},
-            {id:16,title:'ncert',author:'Tata mcgraw hill',publicationYear:2007,language: 'en'},
-            {id:17,title:'ncert',author:'Tata mcgraw hill',publicationYear:2008,language: 'en'},
-            {id:18,title:'ncert',author:'Tata mcgraw hill',publicationYear:2009,language: 'en'},
-            {id:19,title:'ncert',author:'Tata mcgraw hill',publicationYear:2010,language: 'en'},
-            {id:20,title:'ncert',author:'Tata mcgraw hill',publicationYear:2001,language: 'en'},
-            {id:21,title:'ncert',author:'Tata mcgraw hill',publicationYear:2002,language: 'en'},
-            {id:22,title:'ncert',author:'Tata mcgraw hill',publicationYear:2003,language: 'en'},
-            {id:23,title:'ncert',author:'Tata mcgraw hill',publicationYear:2004,language: 'en'},
-            {id:24,title:'ncert',author:'Tata mcgraw hill',publicationYear:2005,language: 'en'},
-            {id:25,title:'ncert',author:'Tata mcgraw hill',publicationYear:2006,language: 'en'},
-            {id:26,title:'ncert',author:'Tata mcgraw hill',publicationYear:2007,language: 'en'},
-            {id:27,title:'ncert',author:'Tata mcgraw hill',publicationYear:2008,language: 'en'},
-            {id:28,title:'ncert',author:'Tata mcgraw hill',publicationYear:2009,language: 'en'},
-            {id:29,title:'ncert',author:'Tata mcgraw hill',publicationYear:2010,language: 'en'},
-            {id:30,title:'ncert',author:'Tata mcgraw hill',publicationYear:2001,language: 'en'}
-  ];
+  item: any;
+  items: any[];
+  searchField: any;
 
   constructor(private el: ElementRef) {
     this.elementRef = el;
   }
 
+  ngOnInit(){
+    this.items = this.dataService.getData();
+    this.searchField = this.dataService.getSearchField();
+  }
+
   filterQuery() {
-    this.filteredList = this.items.filter((el: Book) => {
-      return el.author.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+    this.filteredList = this.items.filter((el: any) => {
+      return this.extractValue(el, this.searchField).toLowerCase().indexOf(this.query.toLowerCase()) > -1;
     });
+  }
+
+  extractValue(obj: any, key: string) {
+      let keys: string[];
+      let result: any;
+      if (key) {
+          keys = key.split(".");
+          result = obj;
+          for (let i = 0; i < keys.length; i++) {
+              if (result) {
+                  result = result[keys[i]];
+              }
+          }
+      }
+      else {
+          result = obj;
+      }
+      return result;
   }
 
   filter(event: any) {
@@ -144,12 +140,11 @@ export class AutoComplete {
 
   }
 
-  select(item:Book) {
+  select(item: any) {
     this.selectedItem = item;
     this.selectedItem.selected = true;
     this.query = item.author;
     this.filteredList = [];
-    //this.opened = false;
   }
 
   showAll(input: any) {

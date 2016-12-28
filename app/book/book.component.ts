@@ -6,6 +6,7 @@ import {HTTPTestService} from '../common/http-test.service';
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import {BookService} from '../common/books.service';
 import {Chapter} from '../common/chapter.model';
+import {CompleterService} from '../common/completer.service';
 
 @Component({
     selector: 'book',
@@ -23,10 +24,12 @@ export class BookComponent implements OnInit {
     chapter: Chapter = new Chapter();
     editing: boolean = true;
     isDetails: boolean = false;
+    completerService: CompleterService;
 
     constructor( public _langCodesService: LangCodesService, public _httpService : HTTPTestService, 
                     public route : ActivatedRoute, public router : Router, public bookService: BookService) {//_langCodesService is an object of LangCodesService
     //constructor creates these objects but their functionality is defined in ngoninit 
+    this.completerService = new CompleterService(this.bookService.getBooks(), "author");
   } 
    public tags = ['Grade1', 'Grade2', 'Grade3'];
    
