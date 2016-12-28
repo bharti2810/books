@@ -1,7 +1,6 @@
 
 import {Component} from '@angular/core';
 import {BookService}  from '../common/books.service';
-import { AutoComplete } from '../common/autocomplete';
 
 @Component({
     selector: 'app',

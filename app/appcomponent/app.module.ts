@@ -8,7 +8,6 @@ import {BookComponent} from '../book/book.component';
 import {BookListComponent} from '../book/booklist.component';
 import {Ng2PaginationModule} from 'ng2-pagination'; //importing ng2-pagination
 import {ChapterComponent} from '../book/chapter/chapter.component';
-import {AutoComplete} from '../common/autocomplete';
 import { RlTagInputModule } from 'angular2-tag-input';
 
 
@@ -24,7 +23,7 @@ import { RlTagInputModule } from 'angular2-tag-input';
             { path: 'chapter/:idparam' , component: ChapterComponent},
     ], {useHash: true}) 
     ],
-    declarations: [BookComponent, AppComponent, BookListComponent, ChapterComponent, AutoComplete],
+    declarations: [BookComponent, AppComponent, BookListComponent, ChapterComponent],
     bootstrap:      [AppComponent]
 })
 
