@@ -60,7 +60,6 @@ ngOnInit() {
             error => alert(error),
             () => console.log(this.postData)); //() is used for completed notification
   }
-
     
   edit() {
     this.editing= !this.editing;

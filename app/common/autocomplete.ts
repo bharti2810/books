@@ -1,4 +1,4 @@
-import { Component, Input, ElementRef, OnInit } from '@angular/core';
+import { Component, Input, Output, ElementRef, OnInit,EventEmitter } from '@angular/core';
 import {BookService} from './books.service';
 import {CompleterService} from '../common/completer.service';
 
@@ -6,10 +6,10 @@ import {CompleterService} from '../common/completer.service';
 @Component({
   selector: 'autocomplete',
   template: `
-    <input #input type="text" class="form-control input-list" [(ngModel)]="query" (keyup)="filter($event)">
-    <button class="button-list" (click)="showAll(input)">
+    <input #input type="text" class="form-control form-inp" [(ngModel)]="query" (keyup)="filter($event)">
+    <!--<button class="button-list" (click)="showAll(input)">
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
-    </button>
+    </button>--->
 
     <ul id="list-group" class="list-group group-list" *ngIf="filteredList.length > 0">
         <li *ngFor="let item of filteredList" [class.active]="item.selected" [id]="item.selected" class="list-group-item item-list" (click)="select(item)">
@@ -17,8 +17,9 @@ import {CompleterService} from '../common/completer.service';
         </li>
     </ul>
 
-    <p *ngIf="selectedItem">Selected: {{ selectedItem | json }}</p>
+    <!--<p *ngIf="selectedItem">Selected: {{ selectedItem | json }}</p>-->
   `,
+    styleUrls: ['app/common/style.css', 'app/book/book.componentstyle.css'],
   host: {
     '(document:click)': 'handleClick($event)',
     '(keydown)': 'handleKeyDown($event)'
@@ -36,6 +37,10 @@ export class AutoComplete implements OnInit{
   item: any;
   items: any[];
   searchField: any;
+
+  @Input() public inputModel: String;
+  @Output() public inputModelChange: EventEmitter<String> = new EventEmitter();
+
 
   constructor(private el: ElementRef) {
     this.elementRef = el;
@@ -143,7 +148,8 @@ export class AutoComplete implements OnInit{
   select(item: any) {
     this.selectedItem = item;
     this.selectedItem.selected = true;
-    this.query = item.author;
+    this.query = this.extractValue(item, this.searchField);
+    this.onChange(this.query);
     this.filteredList = [];
   }
 
@@ -204,4 +210,8 @@ export class AutoComplete implements OnInit{
     }
   }
 
+  onChange(value) {
+    this.inputModel = value;
+    this.inputModelChange.emit(this.inputModel);
+  }
 }

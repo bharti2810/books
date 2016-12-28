@@ -5,13 +5,14 @@
     <form method="post">
         <div class="col-2 form-group">
             <label>Title         
-                <input type="text" name="title" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
+                <input type="text" name="title"  class="form-inp" placeholder="Title" [(ngModel)]='book.title'   [readOnly]="!editing" required><br><br><!-- only form elements with name attribute shll be passed-->
             </label>
         </div>
 
         <div class="col-2 form-group">
             <label>Author    
-                <input type="text" name="author" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>
+                <autocomplete [dataService]="completerService" [(inputModel)]="book.author"></autocomplete>
+                <!--<input type="text" name="author" class="form-inp" placeholder="Author" [(ngModel)]='book.author' required [readOnly]="!editing"><br><br>-->
             </label>
         </div>
 
@@ -68,5 +69,3 @@
         </div>
     </div>
 </div>
-
-<autocomplete [dataService]="completerService"></autocomplete>
