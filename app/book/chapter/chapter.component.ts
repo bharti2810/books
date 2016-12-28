@@ -6,12 +6,10 @@ import { Router } from '@angular/router';
 import {BookService} from '../../common/books.service';
 import {Book} from '../../common/book.model';
 
-
-
 @Component({
   selector: 'chapter',
   templateUrl: 'app/book/chapter/chapter.component.html',
-  styleUrls: ['app/common/style.css', 'app/book/chapter/chapter.component.css'],
+  styleUrls: ['app/common/style.css', 'app/book/chapter/chapter.component.css' , 'app/book/book.componentstyle.css'],
   providers: [HTTPTestService]
 })
 

@@ -11,5 +11,4 @@ import { AutoComplete } from '../common/autocomplete';
  })
 
 export class AppComponent {
-   
  }

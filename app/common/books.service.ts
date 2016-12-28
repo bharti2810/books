@@ -42,7 +42,7 @@ export class BookService {
 
 
       private chapters: Chapter[] = [
-        { id: '0', index: 1, title: 'Atoms and Molecules', successor: '2', predecessor: '', },
+        { id: '1', index: 1, title: 'Atoms and Molecules', successor: '2', predecessor: '', },
         { id: '2', index: 2, title: 'Atoms and Molecules', successor: '3', predecessor: '1', },
         { id: '3', index: 3, title: 'Atoms and Molecules', successor: '4', predecessor: '2', },
         { id: '4', index: 4, title: 'Atoms and Molecules', successor: '5', predecessor: '3', },

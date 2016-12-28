@@ -17,19 +17,21 @@
             </label>
         </div>
 
-        <div class="col-2 form-group">
+        <div class="col-2 form-group chap-nextprev">
             <label>Successor<br>
-                <a class="form_value" *ngIf="isDetails" [routerLink]="[ '/chapter', successor ? successor.id : '', { bookId : book.id }] ">{{ successor ? successor.title : '' }}</a>
-                <select *ngIf="!isDetails" name="successor"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
+                <a class="form_value" [hidden]="!isDetails" [routerLink]="['/chapter', successor ? successor.id : '', { bookId : book.id }] ">{{ successor ? successor.title : '' }}</a>
+                <p class="hyphenp" *ngIf="isDetails && successor === undefined">-</p>
+                <select [hidden]="isDetails" name="successor"  [(ngModel)]='chapter.successor' [disabled]="!editing" required>
                     <option  *ngFor="let chapter of _bookService.getChapters(book.id)" value="{{ chapter.successor }}">{{ chapter.title }}</option> 
                 </select>
             </label>
         </div>
 
-        <div class="col-2 form-group">
-            <label> Predecessor <br>
-                <a class="form_value" *ngIf="isDetails" [routerLink]="[ '/chapter', predecessor ? predecessor.id : '', { bookId : book.id }] ">{{ predecessor ? predecessor.title : '' }}</a>
-                <select *ngIf="!isDetails" name="predecessor"   [(ngModel)]='chapter.predecessor' [disabled]="!editing" required> 
+        <div class="col-2 form-group chap-nextprev">
+            <label>Predecessor<br>
+                <a class="form_value" [hidden]="!isDetails" [routerLink]="[ '/chapter', predecessor ? predecessor.id : '', { bookId : book.id }] ">{{ predecessor ? predecessor.title : '' }}</a>
+                <p class="hyphenp" *ngIf="isDetails && predecessor === undefined">-</p>
+                <select [hidden]="isDetails" name="predecessor"   [(ngModel)]='chapter.predecessor' [disabled]="!editing" required> 
                         <option *ngFor="let chapter of _bookService.getChapters(book.id)" value ="{{ chapter.predecessor }}">{{ chapter.title }}</option>
                 </select>
             </label>
