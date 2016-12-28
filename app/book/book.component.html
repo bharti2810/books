@@ -63,7 +63,7 @@
     </div><br>
     <div id="collapse1" class="panel-collapse collapse chap-list">
         <div class="list-group">
-            <a class="list-group-item" [routerLink]="['/chapter', chapter.id, { bookId : book.id }]" *ngFor="let chapter of bookService.getChapters(book.id)"> {{chapter.id}}-{{chapter.title}}
+            <a class="list-group-item" [routerLink]="['/chapter', chapter.id, { bookId : book.id }]" *ngFor="let chapter of bookService.getChapters(book.id)"> {{chapter.index}} - {{chapter.title}}
             </a>
         </div>
     </div>
