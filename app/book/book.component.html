@@ -11,7 +11,7 @@
 
         <div class="col-2 form-group">
             <label>Author    
-                <autocomplete [dataService]="completerService" [(inputModel)]="book.author"></autocomplete>
+                <autocomplete [dataService]="completerService" [(disabled)]="!editing" [(inputModel)]="book.author"></autocomplete>
             </label>
         </div>
 

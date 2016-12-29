@@ -6,7 +6,7 @@ import {CompleterService} from '../common/completer.service';
 @Component({
   selector: 'autocomplete',
   template: `
-    <input #input type="text" class="form-inp" [(ngModel)]="query" (keyup)="filter($event)">
+    <input #input type="text" class="form-inp" [(ngModel)]="inputModel" [readOnly]="disabled" (keyup)="filter($event)">
     <!--<button class="button-list" (click)="showAll(input)">
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </button>--->
@@ -28,7 +28,6 @@ import {CompleterService} from '../common/completer.service';
 
 export class AutoComplete implements OnInit{
   @Input('dataService') public dataService: CompleterService;
-  query: string = '';
   filteredList: any[] = [];
   elementRef: ElementRef;
   pos: number = -1;
@@ -39,6 +38,7 @@ export class AutoComplete implements OnInit{
   searchField: any;
 
   @Input() public inputModel: String;
+  @Input() public disabled: boolean;
   @Output() public inputModelChange: EventEmitter<String> = new EventEmitter();
 
 
@@ -53,7 +53,7 @@ export class AutoComplete implements OnInit{
 
   filterQuery() {
     this.filteredList = this.items.filter((el: any) => {
-      return this.extractValue(el, this.searchField).toLowerCase().indexOf(this.query.toLowerCase()) > -1;
+      return this.extractValue(el, this.searchField).toLowerCase().indexOf(this.inputModel.toLowerCase()) > -1;
     });
   }
 
@@ -77,7 +77,7 @@ export class AutoComplete implements OnInit{
 
   filter(event: any) {
 
-    if (this.query !== '') {
+    if (this.inputModel !== '') {
       if (this.opened) {
 
         if ((event.keyCode >= 48 && event.keyCode <= 57) ||
@@ -148,8 +148,7 @@ export class AutoComplete implements OnInit{
   select(item: any) {
     this.selectedItem = item;
     this.selectedItem.selected = true;
-    this.query = this.extractValue(item, this.searchField);
-    this.onChange(this.query);
+    this.onChange(this.extractValue(item, this.searchField));
     this.filteredList = [];
   }
 
@@ -163,7 +162,7 @@ export class AutoComplete implements OnInit{
       this.opened = true;
       this.filteredList = this.items;
     }
-    if (this.query === '') {
+    if (this.inputModel === '') {
       this.clearAll();
     }
 
