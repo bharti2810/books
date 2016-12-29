@@ -6,7 +6,7 @@ import {CompleterService} from '../common/completer.service';
 @Component({
   selector: 'autocomplete',
   template: `
-    <input #input type="text" class="form-control form-inp" [(ngModel)]="query" (keyup)="filter($event)">
+    <input #input type="text" class="form-inp" [(ngModel)]="query" (keyup)="filter($event)">
     <!--<button class="button-list" (click)="showAll(input)">
       <i class="fa fa-sort-desc" aria-hidden="true"></i>
     </button>--->

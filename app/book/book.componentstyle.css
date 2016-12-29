@@ -120,7 +120,8 @@ form>div>label>select {
 }
 
 form>div>label>input:focus,
-form>div>label>select:focus {
+form>div>label>select:focus,
+.form-inp:focus {
     opacity: 1;
     box-shadow: 0 3px 4px rgba(0, 0, 0, .15);
 }
